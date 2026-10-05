@@ -3,9 +3,10 @@ import { create } from "zustand";
 
 export const useSortingStore = create<SortingState>((set, get) => ({
   vectorConfig: {
-    maxSize: 300,
+    maxSize: 10000,
     actualSize: 50,
-    maxValue: 500,
+    maxValue: 1000,
+    minSize:50
   },
   currentArray: [],
   setSize: (n) =>

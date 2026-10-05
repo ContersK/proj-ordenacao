@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="bg-base-100 flex justify-between items-center p-4 shadow">
-      <p className="font-bold align-">Analise de Algoritmos de ordenação</p>
+    <header className="sticky top-0 z-50 w-full shrink-0 bg-base-100 flex justify-between items-center gap-4 p-4 shadow">
+      <p className="font-bold">Analise de Algoritmos de ordenação</p>
       <section className="flex gap-2">
         <Link href="/visualizar" className="btn btn-primary">
           Visualizar

@@ -1,4 +1,9 @@
-import { VectorConfig } from "./generalTypes";
+export type VectorConfig = {
+  maxSize: number;
+  actualSize: number;
+  maxValue: number;
+  minSize: number;
+};
 
 export type SortingState = {
   vectorConfig: VectorConfig;
