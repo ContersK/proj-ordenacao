@@ -11,11 +11,13 @@ export type SortMetrics = {
   swaps: number;
   writes: number;
   timeMs: number;
+  recursiveCalls: number;
 };
 
 export type SortResult = {
   steps: SortStep[];
   metrics: SortMetrics;
+  array: number[];
 };
 
 export type AlgorithmId =
@@ -34,6 +36,7 @@ export type SortingAlgorithm = {
     best: string;
     average: string;
     worst: string;
+    space: string;
   };
   stable: boolean;
   inPlace: boolean;
@@ -42,4 +45,9 @@ export type SortingAlgorithm = {
 export type BenchmarkResult = {
   algorithmUsed: AlgorithmId;
   metrics: SortMetrics;
+};
+
+export type SortOptions = {
+  recordSteps?: boolean;  
+  maxSteps?: number;      
 };

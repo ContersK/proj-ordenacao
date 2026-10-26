@@ -13,14 +13,15 @@ export default function VisualizadorPage() {
   const setSize = useSortingStore((state) => state.setSize);
   const maxSize = useSortingStore((state) => state.vectorConfig.maxSize);
   const maxValue = useSortingStore((state) => state.vectorConfig.maxValue);
+  const minSize = useSortingStore((state) => state.vectorConfig.minSize);
 
   //constantes para armazenar o tamanho do array e manipular o erro
   const [size, setSizeInput] = useState(50);
   const [erro, setErro] = useState("");
 
   const handleGerar = () => {
-    if (size < 50 || size > maxSize) {
-      setErro(`O tamanho do array deve ser entre 2 e ${maxSize}`);
+    if (size < minSize || size > maxSize) {
+      setErro(`O tamanho do array deve ser entre ${minSize} e ${maxSize}`);
       return;
     }
     setErro("");
@@ -45,7 +46,7 @@ export default function VisualizadorPage() {
           Tamanho do array (50–{maxSize})
           <input
             type="number"
-            min={2}
+            min={minSize}
             max={maxSize}
             placeholder="tamanho do array"
             value={size}
