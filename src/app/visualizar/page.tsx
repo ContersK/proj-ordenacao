@@ -1,10 +1,10 @@
 "use client";
-import { useSortingStore } from "@/modules/sorting/index";
+import { useSortingStore } from "@/modules/algorithms/index";
 import { AlertCircleIcon } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@heroui/react";
-import {ChartColumn} from '@gravity-ui/icons';
+import { ChartColumn } from "@gravity-ui/icons";
 
 export default function VisualizadorPage() {
   //constantes para armazenar as propriedades do store
@@ -16,7 +16,7 @@ export default function VisualizadorPage() {
   const minSize = useSortingStore((state) => state.vectorConfig.minSize);
 
   //constantes para armazenar o tamanho do array e manipular o erro
-  const [size, setSizeInput] = useState(50);
+  const [size, setSizeInput] = useState(minSize);
   const [erro, setErro] = useState("");
 
   const handleGerar = () => {
@@ -43,7 +43,7 @@ export default function VisualizadorPage() {
     <div className="flex flex-col gap-4">
       <div className="flex flex-wrap items-end gap-2">
         <label className="flex flex-col gap-1 text-sm">
-          Tamanho do array (50–{maxSize})
+          Tamanho do array ({minSize}–{maxSize})
           <input
             type="number"
             min={minSize}
@@ -55,7 +55,9 @@ export default function VisualizadorPage() {
           />
         </label>
         <Button variant="secondary" onPress={handleGerar}>
-          <ChartColumn/>Gerar array</Button>
+          <ChartColumn />
+          Gerar array
+        </Button>
       </div>
       {erro && (
         <div role="alert" className="alert alert-error">
@@ -66,9 +68,7 @@ export default function VisualizadorPage() {
 
       <p>quantidade de elementos do array: {currentArray.length}</p>
       <div className="bg-base-200 rounded p-2 overflow-x-auto overflow-y-hidden">
-        <div
-          className={`flex items-end h-64 md:h-80 min-w-full ${barGap}`}
-        >
+        <div className={`flex items-end h-64 md:h-80 min-w-full ${barGap}`}>
           {currentArray.map((item, index) => (
             <div
               key={index}

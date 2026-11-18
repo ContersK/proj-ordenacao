@@ -6,7 +6,7 @@ export const useSortingStore = create<SortingState>((set, get) => ({
     maxSize: 10000,
     actualSize: 50,
     maxValue: 1000,
-    minSize:50
+    minSize: 10,
   },
   currentArray: [],
   setSize: (n) =>

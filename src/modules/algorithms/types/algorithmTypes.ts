@@ -3,6 +3,7 @@ export type SortStep = {
   array: number[];
   compare?: [number, number];
   swap?: [number, number];
+  write?: number;
 };
 
 export type SortMetrics = {
@@ -48,6 +49,6 @@ export type BenchmarkResult = {
 };
 
 export type SortOptions = {
-  recordSteps?: boolean;  
-  maxSteps?: number;      
+  recordSteps?: boolean;
+  maxSteps?: number;
 };
