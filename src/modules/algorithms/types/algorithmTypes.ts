@@ -1,10 +1,7 @@
-export type SortStep = {
-  //transformar em evento leve com indice + types
-  array: number[];
-  compare?: [number, number];
-  swap?: [number, number];
-  write?: number;
-};
+export type SortStep =
+  | { type: "compare"; i: number; j: number }
+  | { type: "swap"; i: number; j: number }
+  | { type: "write"; index: number; value: number; previous: number };
 
 export type SortMetrics = {
   comparisons: number;
@@ -30,7 +27,7 @@ export type AlgorithmId =
   | "heap";
 
 export type SortingAlgorithm = {
-  algorithmUsed: AlgorithmId;
+  id: AlgorithmId;
   name: string;
   description: string;
   complexities: {
@@ -41,14 +38,19 @@ export type SortingAlgorithm = {
   };
   stable: boolean;
   inPlace: boolean;
-};
-
-export type BenchmarkResult = {
-  algorithmUsed: AlgorithmId;
-  metrics: SortMetrics;
+  dominantOperation: string;
+  recurrence: string;
 };
 
 export type SortOptions = {
   recordSteps?: boolean;
-  maxSteps?: number;
+};
+
+export type SortingRun = (
+  input: number[],
+  options?: SortOptions,
+) => SortResult;
+
+export type SortingEntry = SortingAlgorithm & {
+  run: SortingRun;
 };

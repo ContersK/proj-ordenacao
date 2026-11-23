@@ -1,13 +1,16 @@
+import type { InputFormat } from "./benchmarkTypes";
+
 export type VectorConfig = {
-  maxSize: number;
   actualSize: number;
   maxValue: number;
-  minSize: number;
 };
 
 export type SortingState = {
   vectorConfig: VectorConfig;
+  inputFormat: InputFormat;
   currentArray: number[];
   setSize: (n: number) => void;
+  setInputFormat: (format: InputFormat) => void;
+  setArray: (array: number[]) => void;
   generate: () => void;
 };
